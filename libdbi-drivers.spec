@@ -1,23 +1,23 @@
 %define	major 0
-%define libname	%mklibname dbi %{major}
+%define libname %mklibname dbi %{major}
 
 Summary:	Database drivers for libdbi
 Name:		libdbi-drivers
-Version:	0.8.1
-Release:	%mkrel 2
+Version:	0.8.2
+Release:	%mkrel 1
 License:	LGPL
 Group:		System/Libraries
 URL:		http://libdbi-drivers.sourceforge.net/
-Source0:	http://prdownloads.sourceforge.net/libdbi-drivers/%{name}-%{version}a.tar.bz2
+Source0:	http://prdownloads.sourceforge.net/libdbi-drivers/%{name}-%{version}-1.tar.gz
 Patch0:		libdbi-drivers-0.8.1-freetds_mssql.diff
 BuildRequires:	libtool
 BuildRequires:	autoconf2.5
-BuildRequires:	MySQL-devel
+BuildRequires:	mysql-devel
 BuildRequires:	postgresql-devel
 BuildRequires:	sqlite-devel
 BuildRequires:	sqlite3-devel
 BuildRequires:	freetds_mssql-devel >= 0.62.4
-BuildRequires:	libdbi-devel >= 0.8.1
+BuildRequires:	dbi-devel >= 0.8.2
 BuildRoot:	%{_tmppath}/%{name}-%{version}-root
 
 %description
@@ -76,7 +76,7 @@ does not require recompilation or rewriting source code.
 Summary:	Static library and header files for the %{name} library drivers
 Group:		Development/C
 Provides:	%{name}-drivers-devel
-Requires:	libdbi-devel >= 0.8.1
+Requires:	dbi-devel >= 0.8.2
 
 %description	devel
 libdbi implements a database-independent abstraction layer in C,
@@ -87,7 +87,7 @@ framework.
 
 %prep
 
-%setup -q -n %{name}-%{version}
+%setup -q -n %{name}-%{version}-1
 %patch0 -p0
 
 # fix dir perms
@@ -179,5 +179,3 @@ rm -rf %{buildroot}%{_docdir}/%{name}*
 %{_libdir}/dbd/*.a
 %{_libdir}/dbd/*.la
 %{_includedir}/dbi/*.h
-
-
