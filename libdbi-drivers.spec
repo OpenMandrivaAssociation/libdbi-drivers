@@ -18,7 +18,6 @@ BuildRequires:	sqlite-devel
 BuildRequires:	sqlite3-devel
 BuildRequires:	freetds_mssql-devel >= 0.62.4
 BuildRequires:	dbi-devel >= 0.8.2
-BuildRoot:	%{_tmppath}/%{name}-%{version}-root
 
 %description
 libdbi implements a database-independent abstraction layer in C,
