@@ -8,7 +8,7 @@ Release:	%mkrel 1
 License:	LGPL
 Group:		System/Libraries
 URL:		http://libdbi-drivers.sourceforge.net/
-Source0:	http://prdownloads.sourceforge.net/libdbi-drivers/%{name}-%{version}.tar.gz
+Source0:	http://prdownloads.sourceforge.net/libdbi-drivers/%{name}-%{version}-1.tar.gz
 Patch0:		libdbi-drivers-0.8.1-freetds_mssql.diff
 BuildRequires:	libtool
 BuildRequires:	autoconf2.5
@@ -115,7 +115,7 @@ This package contains the static libraries and header files.
 
 %prep
 
-%setup -q -n %{name}-%{version}
+%setup -q -n %{name}-%{version}-1
 %patch0 -p0
 
 # fix dir perms
