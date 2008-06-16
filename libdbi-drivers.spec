@@ -4,19 +4,18 @@
 Summary:	Database drivers for libdbi
 Name:		libdbi-drivers
 Version:	0.8.3
-Release:	%mkrel 2
+Release:	%mkrel 3
 License:	LGPL
 Group:		System/Libraries
 URL:		http://libdbi-drivers.sourceforge.net/
 Source0:	http://prdownloads.sourceforge.net/libdbi-drivers/%{name}-%{version}-1.tar.gz
-Patch0:		libdbi-drivers-0.8.1-freetds_mssql.diff
 BuildRequires:	libtool
 BuildRequires:	autoconf2.5
 BuildRequires:	mysql-devel
 BuildRequires:	postgresql-devel
 BuildRequires:	sqlite-devel
 BuildRequires:	sqlite3-devel
-BuildRequires:	freetds_mssql-devel >= 0.62.4
+BuildRequires:	freetds-devel >= 0.62.4
 BuildRequires:	dbi-devel >= 0.8.3
 BuildRequires:	openjade
 BuildRequires:	docbook-style-dsssl
@@ -116,7 +115,6 @@ This package contains the static libraries and header files.
 %prep
 
 %setup -q -n %{name}-%{version}-1
-%patch0 -p0
 
 # fix dir perms
 find -type d | xargs chmod 755
@@ -133,7 +131,7 @@ sh autogen.sh
     --with-sqlite \
     --with-sqlite3 \
     --with-freetds \
-    --with-freetds-incdir=%{_includedir}/freetds_mssql \
+    --with-freetds-incdir=%{_includedir} \
     --with-freetds-libdir=%{_libdir} \
     --with-dbi-incdir=%{_includedir}/dbi \
     --with-dbi-libdir=%{_libdir}
