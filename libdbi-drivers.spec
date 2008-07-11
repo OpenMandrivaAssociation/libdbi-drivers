@@ -4,7 +4,7 @@
 Summary:	Database drivers for libdbi
 Name:		libdbi-drivers
 Version:	0.8.3
-Release:	%mkrel 3
+Release:	%mkrel 4
 License:	LGPL
 Group:		System/Libraries
 URL:		http://libdbi-drivers.sourceforge.net/
@@ -139,7 +139,7 @@ sh autogen.sh
 %make
 
 %install
-[ "%{buildroot}" != "/" ] && rm -rf %{buildroot}
+rm -rf %{buildroot}
 
 %makeinstall_std
 
@@ -161,7 +161,7 @@ cp drivers/sqlite3/TODO TODO.sqlite3
 rm -rf %{buildroot}%{_docdir}/%{name}*
 
 %clean
-[ "%{buildroot}" != "/" ] && rm -rf %{buildroot}
+rm -rf %{buildroot}
 
 %files dbd-mysql
 %defattr(-,root,root)
