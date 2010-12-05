@@ -1,10 +1,7 @@
-%define	major 0
-%define libname %mklibname dbi %{major}
-
 Summary:	Database drivers for libdbi
 Name:		libdbi-drivers
 Version:	0.8.3
-Release:	%mkrel 8
+Release:	%mkrel 9
 License:	LGPL
 Group:		System/Libraries
 URL:		http://libdbi-drivers.sourceforge.net/
