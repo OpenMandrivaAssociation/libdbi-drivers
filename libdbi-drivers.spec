@@ -1,7 +1,7 @@
 Summary:	Database drivers for libdbi
 Name:		libdbi-drivers
 Version:	0.8.3
-Release:	%mkrel 10
+Release:	%mkrel 11
 License:	LGPL
 Group:		System/Libraries
 URL:		http://libdbi-drivers.sourceforge.net/
