@@ -1,23 +1,21 @@
 Summary:	Database drivers for libdbi
 Name:		libdbi-drivers
 Version:	0.8.3
-Release:	%mkrel 11
+Release:	12
 License:	LGPL
 Group:		System/Libraries
 URL:		http://libdbi-drivers.sourceforge.net/
 Source0:	http://prdownloads.sourceforge.net/libdbi-drivers/%{name}-%{version}-1.tar.gz
-BuildRequires:	libtool
-BuildRequires:	autoconf2.5
+BuildRequires:	autoconf automake libtool
 BuildRequires:	mysql-devel
 BuildRequires:	postgresql-devel
 BuildRequires:	sqlite-devel
 BuildRequires:	sqlite3-devel
 BuildRequires:	freetds-devel >= 0.62.4
-BuildRequires:	dbi-devel >= 0.8.3
+BuildRequires:	dbi-devel >= 0.8.4
 BuildRequires:	openjade
 BuildRequires:	docbook-style-dsssl
 BuildRequires:	docbook-dtd41-sgml
-BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
 libdbi implements a database-independent abstraction layer in C, similar to the
@@ -99,7 +97,7 @@ require recompilation or rewriting source code.
 Summary:	Static library and header files for the %{name} library drivers
 Group:		Development/C
 Provides:	%{name}-drivers-devel
-Requires:	dbi-devel >= 0.8.2
+Requires:	dbi-devel >= 0.8.4
 
 %description	devel
 libdbi implements a database-independent abstraction layer in C, similar to the
@@ -157,11 +155,10 @@ cp drivers/sqlite3/TODO TODO.sqlite3
 # cleanup
 rm -rf %{buildroot}%{_docdir}/%{name}*
 
-%clean
-rm -rf %{buildroot}
+# cleanups
+rm -rf %{buildroot}%{_libdir}/dbd/*.*a
 
 %files dbd-mysql
-%defattr(-,root,root)
 %doc drivers/mysql/README
 %doc drivers/mysql/AUTHORS
 %doc drivers/mysql/dbd_mysql
@@ -169,7 +166,6 @@ rm -rf %{buildroot}
 %{_libdir}/dbd/libdbdmysql.so
 
 %files dbd-pgsql
-%defattr(-,root,root)
 %doc drivers/pgsql/README
 %doc drivers/pgsql/AUTHORS
 %doc drivers/pgsql/dbd_pgsql
@@ -177,7 +173,6 @@ rm -rf %{buildroot}
 %{_libdir}/dbd/libdbdpgsql.so
 
 %files dbd-sqlite
-%defattr(-,root,root)
 %doc drivers/sqlite/README
 %doc drivers/sqlite/AUTHORS
 %doc drivers/sqlite/dbd_sqlite
@@ -185,7 +180,6 @@ rm -rf %{buildroot}
 %{_libdir}/dbd/libdbdsqlite.so
 
 %files dbd-sqlite3
-%defattr(-,root,root)
 %doc drivers/sqlite3/AUTHORS
 %doc drivers/sqlite3/README
 %doc drivers/sqlite3/AUTHORS
@@ -194,13 +188,9 @@ rm -rf %{buildroot}
 %{_libdir}/dbd/libdbdsqlite3.so
 
 %files dbd-freetds
-%defattr(-,root,root)
 %doc drivers/freetds/README
 %{_libdir}/dbd/libdbdfreetds.so
 
 %files devel
-%defattr(-,root,root)
 %doc AUTHORS ChangeLog INSTALL README TODO*
-%{_libdir}/dbd/*.a
-%{_libdir}/dbd/*.la
 %{_includedir}/dbi/*.h
