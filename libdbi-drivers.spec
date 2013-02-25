@@ -1,3 +1,5 @@
+%define debug_package %nil
+
 Summary:	Database drivers for libdbi
 Name:		libdbi-drivers
 Version:	0.8.3
@@ -6,12 +8,13 @@ License:	LGPL
 Group:		System/Libraries
 URL:		http://libdbi-drivers.sourceforge.net/
 Source0:	http://prdownloads.sourceforge.net/libdbi-drivers/%{name}-%{version}-1.tar.gz
+Patch0:		libdbi-drivers-0.8.3-automake-1.13.patch
 BuildRequires:	libtool
 BuildRequires:	autoconf
 BuildRequires:	mysql-devel
 BuildRequires:	postgresql-devel
-BuildRequires:	sqlite-devel
-BuildRequires:	sqlite3-devel
+BuildRequires:	pkgconfig(sqlite)
+BuildRequires:	pkgconfig(sqlite3)
 BuildRequires:	freetds-devel >= 0.62.4
 BuildRequires:	dbi-devel >= 0.8.3
 BuildRequires:	openjade
@@ -110,6 +113,7 @@ This package contains the static libraries and header files.
 
 %prep
 %setup -q -n %{name}-%{version}-1
+%apply_patches
 
 # fix dir perms
 find -type d | xargs chmod 755
