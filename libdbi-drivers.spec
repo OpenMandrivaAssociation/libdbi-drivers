@@ -3,7 +3,7 @@
 Summary:	Database drivers for libdbi
 Name:		libdbi-drivers
 Version:	0.9.0
-Release:	7
+Release:	8
 License:	LGPLv2
 Group:		System/Libraries
 Url:		http://libdbi-drivers.sourceforge.net/
@@ -18,7 +18,6 @@ BuildRequires:	dbi-devel >= 0.8.3
 BuildRequires:	freetds-devel >= 0.62.4
 BuildRequires:	mysql-devel
 BuildRequires:	postgresql-devel
-BuildRequires:	pkgconfig(sqlite)
 BuildRequires:	pkgconfig(sqlite3)
 
 %description
@@ -54,20 +53,6 @@ connections by using this framework.
 This driver provides connectivity to PostgreSQL database servers through the
 libdbi database independent abstraction layer. Switching a program's driver
 does not require recompilation or rewriting source code.
-
-%package	dbd-sqlite
-Summary:	SQLite driver for libdbi
-Group:		System/Libraries
-
-%description	dbd-sqlite
-libdbi implements a database-independent abstraction layer in C, similar to the
-DBI/DBD layer in Perl. Writing one generic set of code, programmers can
-leverage the power of multiple databases and multiple simultaneous database
-connections by using this framework.
-
-This driver provides connectivity to SQLite database servers through the libdbi
-database independent abstraction layer. Switching a program's driver does not
-require recompilation or rewriting source code.
 
 %package	dbd-sqlite3
 Summary:	SQLite3 driver for libdbi
@@ -144,7 +129,6 @@ sh autogen.sh
 	--enable-static \
 	--with-mysql \
 	--with-pgsql \
-	--with-sqlite \
 	--with-sqlite3 \
 	--with-freetds \
 	--with-freetds-incdir=%{_includedir} \
@@ -161,14 +145,12 @@ sh autogen.sh
 install -d %{buildroot}%{_includedir}/dbi
 install -m0644 drivers/mysql/dbd_mysql.h %{buildroot}%{_includedir}/dbi/
 install -m0644 drivers/pgsql/dbd_pgsql.h %{buildroot}%{_includedir}/dbi/
-install -m0644 drivers/sqlite/dbd_sqlite.h %{buildroot}%{_includedir}/dbi/
 install -m0644 drivers/sqlite3/dbd_sqlite3.h %{buildroot}%{_includedir}/dbi/
 install -m0644 drivers/freetds/dbd_freetds.h %{buildroot}%{_includedir}/dbi/
 
 # fix some docs
 cp drivers/mysql/TODO TODO.mysql
 cp drivers/pgsql/TODO TODO.pgsql
-cp drivers/sqlite/TODO TODO.sqlite
 cp drivers/sqlite3/TODO TODO.sqlite3
 
 # cleanup
@@ -187,13 +169,6 @@ rm -rf %{buildroot}%{_docdir}/%{name}*
 %doc drivers/pgsql/dbd_pgsql
 %doc drivers/pgsql/dbd_pgsql.pdf
 %{_libdir}/dbd/libdbdpgsql.so
-
-%files dbd-sqlite
-%doc drivers/sqlite/README
-%doc drivers/sqlite/AUTHORS
-%doc drivers/sqlite/dbd_sqlite
-%doc drivers/sqlite/dbd_sqlite.pdf
-%{_libdir}/dbd/libdbdsqlite.so
 
 %files dbd-sqlite3
 %doc drivers/sqlite3/AUTHORS
