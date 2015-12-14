@@ -1,4 +1,5 @@
 %define debug_package %nil
+%define _disable_rebuild_configure 1
 
 Summary:	Database drivers for libdbi
 Name:		libdbi-drivers
