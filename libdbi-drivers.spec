@@ -4,13 +4,13 @@
 Summary:	Database drivers for libdbi
 Name:		libdbi-drivers
 Version:	0.9.0
-Release:	13
+Release:	14
 License:	LGPLv2
 Group:		System/Libraries
 Url:		http://libdbi-drivers.sourceforge.net/
 Source0:	http://prdownloads.sourceforge.net/libdbi-drivers/%{name}-%{version}.tar.gz
 Patch0:		libdbi-drivers-0.8.3-automake-1.13.patch
-
+Patch1:		freetds-1.0-fix.patch
 BuildRequires:	docbook-style-dsssl
 BuildRequires:	docbook-dtd41-sgml
 BuildRequires:	libtool
