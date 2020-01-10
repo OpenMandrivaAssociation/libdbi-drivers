@@ -99,7 +99,7 @@ This package contains the static libraries and header files.
 
 %prep
 %setup -q
-%apply_patches
+%autopatch -p1
 
 # fix dir perms
 find -type d | xargs chmod 755
