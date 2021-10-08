@@ -1,4 +1,3 @@
-%define debug_package %nil
 %define _disable_rebuild_configure 1
 
 Summary:	Database drivers for libdbi
@@ -98,8 +97,7 @@ connections by using this framework.
 This package contains the static libraries and header files.
 
 %prep
-%setup -q
-%autopatch -p1
+%autosetup -p1
 
 # fix dir perms
 find -type d | xargs chmod 755
@@ -125,7 +123,7 @@ sh autogen.sh
 #autoheader
 #automake --add-missing --copy
 
-%configure2_5x \
+%configure \
 	--enable-shared \
 	--enable-static \
 	--with-mysql \
@@ -137,10 +135,10 @@ sh autogen.sh
 	--with-dbi-incdir=%{_includedir}/dbi \
 	--with-dbi-libdir=%{_libdir}
 
-%make
+%make_build
 
 %install
-%makeinstall_std
+%make_install
 
 # install development headers
 install -d %{buildroot}%{_includedir}/dbi
