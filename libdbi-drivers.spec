@@ -6,7 +6,7 @@ Version:	0.9.0
 Release:	15
 License:	LGPLv2
 Group:		System/Libraries
-Url:		http://libdbi-drivers.sourceforge.net/
+Url:		https://libdbi-drivers.sourceforge.net/
 Source0:	http://prdownloads.sourceforge.net/libdbi-drivers/%{name}-%{version}.tar.gz
 Patch0:		libdbi-drivers-0.8.3-automake-1.13.patch
 Patch1:		freetds-1.0-fix.patch
