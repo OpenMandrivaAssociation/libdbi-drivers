@@ -10,6 +10,11 @@ Url:		https://libdbi-drivers.sourceforge.net/
 Source0:	http://prdownloads.sourceforge.net/libdbi-drivers/%{name}-%{version}.tar.gz
 Patch0:		libdbi-drivers-0.8.3-automake-1.13.patch
 Patch1:		freetds-1.0-fix.patch
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	libtool-base
+BuildRequires:	slibtool
+BuildRequires:	make
 BuildRequires:	docbook-style-dsssl
 BuildRequires:	docbook-dtd41-sgml
 BuildRequires:	libtool
